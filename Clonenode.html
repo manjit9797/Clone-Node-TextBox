@@ -1,0 +1,164 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title></title>
+	<style>
+.col-100 {
+	width:100%;
+	float:left;
+	padding-top:2px;
+}
+.col-50 {
+	width:50%;
+	float:left;
+	padding-top:2px;
+}
+.col-25 {
+	width:25%;
+	/*float:left;*/
+	padding-top:2px;
+}
+.col-20 {
+	width:20%;
+	float:left;
+	padding-top:2px;
+}
+.col-10 {
+	width:10%;
+	float:left;
+	padding-top:2px;
+}
+.col-75 {
+	width:75%;
+	float:left;
+	padding-top:2px;
+}
+.col-35 {
+	width:35%;
+	float:left;
+	padding-top:2px;
+}
+.col-30 {
+	width:30%;
+	float:left;
+	padding-top:2px;
+}
+.col-40 {
+	width:40%;
+	float:left;
+	padding-top:2px;
+}
+input[type="text"],input[type="number"],input[type="date"],input[type="file"],input[type="video"] {
+	width:100%;
+	  height: 20px;
+	border:1px solid #ccc;
+	resize:vertical;
+}
+	h1{
+			background-color: powderblue;
+		}
+input[type="submit"]:hover,input[type="reset"]:hover {
+		background-color: red;
+}
+#nw{
+
+height: 18px;
+}
+#newElementId{
+
+	margin-left: 25%
+}
+.image-upload > input
+{
+    display:none;
+}
+
+.image-upload img
+{
+    width: 80px;
+    cursor: pointer;
+        border: 1px solid;
+}
+img
+{
+    width: 80px;
+    cursor: pointer;
+        border: 1px solid;
+}
+.css-serial {
+  counter-reset: serial-number;  /* Set the serial number counter to 0 */
+}
+
+.css-serial td:first-child:before {
+  counter-increment: serial-number;  /* Increment the serial number counter */
+  content: counter(serial-number);  /* Display the counter */
+}
+@media screen and (max-width:600px) {
+	.container,.col-25,.col-75,.col-50,.col-100,.col-10,.col-20{
+		width:100%;
+		margin-top:0;
+		text-align:left;
+	}	
+}
+	</style>
+ 
+<script type="text/javascript">
+
+  function cloneRow() {
+      var row = document.getElementById("aaa"); 
+      var table = document.getElementById("a5"); 
+      var clone = row.cloneNode(true); 
+      table.appendChild(clone); 
+    }
+function deleteRow(a) {
+  document.getElementById("a5").deleteRow(a);
+}
+
+function myFunction(a) {
+	var s=a.parentNode.parentNode.rowIndex
+	var fReader = new FileReader();
+	fReader.readAsDataURL(a.files[0]);
+	fReader.onloadend = function(event){
+	var img = document.getElementById("a5").rows[s].cells[3].firstChild;
+	img.src = event.target.result;
+	}
+}
+
+
+</script>
+</head>
+<body>
+ <form action="event" method="post" enctype="multipart/form-data">
+	<center> <h1>Event & Activity Details</h1></center>
+	<div class="col-100" id="ss">
+		<div class="col-25"> Event Name </div>
+		<div class="col-75"> <input type="text" name=""></div>
+		<div class="col-25"> Event title </div>
+		<div class="col-75"> <input type="text" name=""></div>
+		<div class="col-25"> Event date </div>
+		<div class="col-75"> <input type="date" name=""></div>
+		<div class="col-25"> Event Description </div>
+		<div class="col-75"> <input type="text" name=""></div>
+
+		<div class="col-25"> Event Photo </div>	
+<div id="a2" class="col-75">
+<table  id="a5" class="css-serial">
+<tr><th>#</th><th></th><th></th></tr>
+<tr id="aaa"> 
+<td style="display: "> </td>
+<td><input type="file" name="" id="a1" style="width: 93%; margin-left: ;" onchange="myFunction(this)"></td>
+<td><input type="text" name="" id="a4" style="width: 93%;"></td>
+<td><img id="blah" src="#" alt="your image" name="abv"/></td>
+<td><div onclick="cloneRow();">Add field</div>
+ <div  onclick=" deleteRow(this.parentNode.parentNode.rowIndex)">remove field</div></td>
+</tr>
+</table>
+</div>
+	</div>
+	<div> <input type="submit" name="btn" ></div>
+	</form>
+
+</body>
+</html>
